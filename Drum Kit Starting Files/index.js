@@ -3,10 +3,12 @@ for (let i = 0; i < 7; i++) {
     var buttonInnerHtml = this.innerHTML;
 
     makeSound(buttonInnerHtml);
+    animation(buttonInnerHtml);
   });
 
   document.addEventListener("keydown", function (event) {
     makeSound(event.key);
+    animation(event.key);
   });
 }
 function makeSound(key) {
@@ -42,4 +44,13 @@ function makeSound(key) {
     default:
       break;
   }
+}
+
+function animation(currentkey) {
+  var button = document.querySelector("." + currentkey);
+  button.classList.add("pressed");
+
+  setTimeout(function () {
+    button.classList.remove("pressed");
+  }, 100);
 }
